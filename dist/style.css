@@ -67,24 +67,24 @@
 .treasure-reveal__glow{position:absolute;width:min(70vw,620px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#f3c46d38 0,transparent 68%);filter:blur(8px);animation:treasure-glow 1.6s ease-in-out both;pointer-events:none}
 .treasure-reveal__content{position:relative;display:grid;justify-items:center;text-align:center;color:#fff4de;width:min(94vw,940px);max-height:92vh}
 .treasure-reveal__content>strong{font:600 clamp(1.65rem,4vw,2.55rem)/1.05 var(--display);letter-spacing:-.015em;margin-bottom:14px;animation:treasure-copy-in .45s .1s var(--ease) both}
-.treasure-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));align-items:center;justify-items:center;gap:clamp(8px,2vw,22px);perspective:1100px;width:min(88vw,820px);max-height:61vh;overflow:auto;padding:8px 10px 18px;margin-bottom:2px}
+.treasure-cards{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(8px,2vw,22px);perspective:1100px;width:min(88vw,820px);max-height:61vh;overflow:auto;padding:8px 10px 18px;margin-bottom:2px}
 .treasure-card{width:min(21vw,20vh,205px);min-width:92px;aspect-ratio:1;perspective:1000px;filter:drop-shadow(0 18px 20px #000a);animation:treasure-arrive .54s calc(var(--token-index)*120ms) cubic-bezier(.2,.82,.22,1) both}
 .treasure-card__inner{position:relative;width:100%;height:100%;transform-style:preserve-3d}
 .treasure-card__face{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;will-change:transform,opacity}
 .treasure-card__back{z-index:2;animation:treasure-back-turn .72s calc(600ms + var(--token-index)*140ms) cubic-bezier(.2,.72,.18,1) both}
-.treasure-card__front{z-index:1;opacity:0;transform:rotateY(-90deg);animation:treasure-front-turn .72s calc(600ms + var(--token-index)*140ms) cubic-bezier(.2,.72,.18,1) both}
+.treasure-card__front{z-index:3;opacity:0;transform:rotateY(-90deg);animation:treasure-front-turn .72s calc(600ms + var(--token-index)*140ms) cubic-bezier(.2,.72,.18,1) both}
 .treasure-reveal__content>p{font:600 clamp(1.15rem,2.7vw,1.55rem)/1.25 var(--display);animation:treasure-copy-in .5s 1.14s var(--ease) both}
 .treasure-reveal__content>small{color:#c8c1b3;margin-top:5px;animation:treasure-copy-in .5s 1.22s var(--ease) both}
 .treasure-skip{margin-top:14px;font-size:.75rem;min-height:36px;padding:7px 12px;color:#d5cdbf;animation:treasure-copy-in .4s .72s var(--ease) both}
 .treasure-reveal--leaving{animation:treasure-curtain-out .26s ease-in both}
 @keyframes treasure-arrive{0%{opacity:0;transform:translate3d(0,-70px,100px) rotateX(34deg) rotateZ(-10deg) scale(.68)}68%{opacity:1;transform:translate3d(0,8px,0) rotateX(-5deg) rotateZ(2deg) scale(1.03)}100%{opacity:1;transform:none}}
 @keyframes treasure-back-turn{0%,20%{opacity:1;transform:rotateY(0) scale(1)}49%{opacity:1;transform:rotateY(88deg) scale(1.06)}50%,100%{opacity:0;transform:rotateY(90deg) scale(1.06)}}
-@keyframes treasure-front-turn{0%,49%{z-index:1;opacity:0;transform:rotateY(-90deg) scale(1.06)}50%{z-index:3;opacity:1;transform:rotateY(-88deg) scale(1.06)}82%{z-index:3;opacity:1;transform:rotateY(4deg) scale(1.02)}100%{z-index:3;opacity:1;transform:rotateY(0) scale(1)}}
+@keyframes treasure-front-turn{0%,49%{opacity:0;transform:rotateY(-90deg) scale(1.06)}50%{opacity:1;transform:rotateY(-88deg) scale(1.06)}82%{opacity:1;transform:rotateY(4deg) scale(1.02)}100%{opacity:1;transform:rotateY(0) scale(1)}}
 @keyframes treasure-glow{0%{opacity:0;transform:scale(.65)}55%{opacity:1;transform:scale(1.08)}100%{opacity:.7;transform:scale(1)}}
 @keyframes treasure-copy-in{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
 @keyframes treasure-curtain-in{from{opacity:0}to{opacity:1}}
 @keyframes treasure-curtain-out{from{opacity:1}to{opacity:0}}
-@media(max-width:650px){.item-token{width:40px;height:40px;flex-basis:40px}.treasure-reveal{padding:14px}.treasure-cards{grid-template-columns:repeat(auto-fit,minmax(84px,1fr));width:92vw;max-height:65vh;gap:6px;padding-inline:4px}.treasure-card{width:min(27vw,17vh,145px);min-width:84px}}
+@media(max-width:650px){.item-token{width:40px;height:40px;flex-basis:40px}.treasure-reveal{padding:14px}.treasure-cards{width:92vw;max-height:65vh;gap:6px;padding-inline:4px}.treasure-card{width:min(27vw,17vh,145px);min-width:84px}}
 @media(prefers-reduced-motion:reduce){.treasure-card__back{display:none!important}.treasure-card__front{z-index:3!important;opacity:1!important;transform:none!important}.treasure-reveal,.treasure-reveal__glow,.treasure-card,.treasure-reveal__content>*{opacity:1!important;transform:none!important}}
 
 /* Experience counter based on the supplied green-and-gold physical tokens. */
@@ -110,3 +110,10 @@
 .adventure-pips{flex-wrap:wrap}
 .setup-form .segmented{flex-wrap:wrap}
 .cover-facts span:last-child{display:none}
+.source-label .icon-warrior,.source-label .icon-cleric,.source-label .icon-mage,.source-label .icon-thief,.source-label .icon-champion,.source-label .icon-scroll{width:38px;height:38px;background:var(--source-symbol) center/contain no-repeat;color:transparent}
+.source-label .icon-warrior{--source-symbol:url('./assets/dice/warrior.webp?v=4')}
+.source-label .icon-cleric{--source-symbol:url('./assets/dice/cleric.webp?v=4')}
+.source-label .icon-mage{--source-symbol:url('./assets/dice/mage.webp?v=4')}
+.source-label .icon-thief{--source-symbol:url('./assets/dice/thief.webp?v=4')}
+.source-label .icon-champion{--source-symbol:url('./assets/dice/champion.webp?v=4')}
+.source-label .icon-scroll{--source-symbol:url('./assets/dice/scroll.webp?v=4')}
