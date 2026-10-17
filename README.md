@@ -20,6 +20,14 @@ python -m http.server 8000 --directory dist
 
 После этого откройте `http://localhost:8000`.
 
+## Тесты
+
+Запуск всех проверок движка и определения наград для анимации (Node.js 18+):
+
+```bash
+node --test tests/*.test.mjs
+```
+
 ## GitHub Pages
 
 Публикация содержимого `dist` выполняется автоматически при обновлении ветки `main`.
